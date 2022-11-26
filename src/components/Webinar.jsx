@@ -36,7 +36,7 @@ export default function Webinar() {
     function handleClick(e) {
         e.preventDefault()
         axios
-        .put('http://localhost:9000/api/webinar/update', showCurrent)
+        .put('https://arcsupportservices-api.onrender.com/api/webinar/update', showCurrent)
         .then(res => console.log(res))
         .catch(err => console.log(err))
     }
