@@ -4,6 +4,10 @@ import axios from 'axios'
 
 export default function Webinar() {
 
+    const [message, setMessage] = useState({
+        text: '',
+        color: ''
+    })
     const [showCurrent, setShowCurrent] = useState({
         title: '',
         date: '',
@@ -37,8 +41,20 @@ export default function Webinar() {
         e.preventDefault()
         axios
         .put('https://arcsupportservices-api.onrender.com/api/webinar/update', showCurrent)
-        .then(res => console.log(res))
-        .catch(err => console.log(err))
+        .then(res => {
+                console.log(res)
+                setMessage({
+                    text: 'Updated successfully',
+                    color: 'green'
+                })
+            })
+        .catch(err => {
+            console.log(err)
+            setMessage({
+                text: 'Error: Webinar not updated',
+                color: 'red'
+            })
+        })
     }
 
     return(
@@ -48,6 +64,7 @@ export default function Webinar() {
             <div>
 
                 <form className="row">
+                    <p style={{color: message.color}}>{message.text}</p>
                     <div>
                         <label className="form-label">Title</label>
                         <input type='text' name="title" className="form-control" onChange={handleChange} value={showCurrent.title} />
