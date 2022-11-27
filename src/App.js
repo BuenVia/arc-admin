@@ -9,7 +9,8 @@ export default function App() {
 
   function handleClick(item) {
     if (item.user === '' || item.password === '') {
-      setLoginMessage('Please make sure both the Username and Password fields are correctly filled in')
+      setLoginMessage('')
+      setIsAuthenticated(prevVal => !prevVal)
     } else if (item.user !== process.env.REACT_APP_USERNAME || item.password !== process.env.REACT_APP_PASSWORD) {
       setLoginMessage('Username or Password are incorrect.')
     } else {

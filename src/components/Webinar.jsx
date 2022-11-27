@@ -19,8 +19,10 @@ export default function Webinar() {
     const dateConvert = showCurrent.date && new Date(showCurrent.date).toISOString().substring(0,10)
 
     useEffect(() => {
+        // const url = 'https://arcsupportservices-api.onrender.com/api/webinar'
+        const url = 'http://localhost:9000/api/webinar'
         axios
-        .get('https://arcsupportservices-api.onrender.com/api/webinar')
+        .get(url)
         .then(response => {
             setShowCurrent(response.data[0])
         })
@@ -39,8 +41,10 @@ export default function Webinar() {
 
     function handleClick(e) {
         e.preventDefault()
+        // const url = 'https://arcsupportservices-api.onrender.com/api/webinar/update'
+        const url = 'http://localhost:9000/api/webinar'
         axios
-        .put('https://arcsupportservices-api.onrender.com/api/webinar/update', showCurrent)
+        .put(url, showCurrent)
         .then(res => {
                 console.log(res)
                 setMessage({

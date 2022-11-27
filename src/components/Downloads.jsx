@@ -6,8 +6,10 @@ export default function Downloads() {
     const [downloadList, setDownloadList] = useState([])
 
     useEffect(() => {
+        // const url = 'https://arcsupportservices-api.onrender.com/api/downloads'
+        const url = 'http://localhost:9000/api/downloads'
         axios
-        .get('https://arcsupportservices-api.onrender.com/api/resource')
+        .get(url)
         .then(response => setDownloadList(response.data))
         .catch(err => console.log(err))
     }, [])
